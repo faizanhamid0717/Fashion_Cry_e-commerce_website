@@ -1,0 +1,232 @@
+{
+  "Add": [
+    {
+      "id": 1,
+      "title": "Pretty Modern Women Dresses",
+      "price": 1500,
+      "qty": 5,
+      "description": "Pretty Modern Women Dresses Fabric Poly Crepe Sleeveless Solid",
+      "category": "women's clothing",
+      "image": "https://images.meesho.com/images/products/17898117/fbdc9_512.webp",
+      "rating": 3.9
+      
+    },
+    {
+      "id": 2,
+      "title": "Comfy Modern Women Dresses ",
+      "price": 2250,
+      "qty": 5,
+      "description": "Comfy Modern Women Dresses Crepe Short Sleeves Printed",
+      "category": "women's clothing",
+      "image": "https://images.meesho.com/images/products/20624112/24dd6_512.webp",
+      "rating": 4.1
+      
+    },
+    {
+      "id": 3,
+      "title": "Men's Traditional Wear Kurta WITH PAIJAMA",
+      "price": 1900,
+      "qty": 3,
+      "description": "",
+      "category": "men's clothing",
+      "image": "https://images.meesho.com/images/products/111658893/mmc86_512.webp",
+      "rating": 3.7
+      
+    },
+    {
+      "id": 4,
+      "title": "Stylish Men Kurtas",
+      "price": 1978,
+      "description": "",
+      "category": "men's clothing",
+      "image": "https://images.meesho.com/images/products/106912891/zmngq_512.webp",
+      "rating": 4.2
+     
+    },
+    {
+      "id": 5,
+      "title": "Trendy Elegant Women Sweatshirts",
+      "price": 695,
+      "description": " Trendy Elegant Women Sweatshirts Fleece Length Long Sleeves Solid",
+      "category": "women's clothing",
+      "image": "https://images.meesho.com/images/products/59924591/auoxl_512.webp",
+      "rating": 4.6
+      
+    },
+    {
+      "id": 6,
+      "title": "Phonolite Multicolor Solid Casual slipper For Women - Pack of 3 ",
+      "price": 999,
+      "description": "Phonolite Slippers are light footwear that are easy to put on and off and are intended to be worn indoors, particularly at home",
+      "category": "women's sleepers",
+      "image": "https://images.meesho.com/images/products/94090879/qj1i6_512.webp",
+      "rating": 3.9
+      
+    },
+    {
+      "id": 7,
+      "title": "Banarasi Jequard Saree",
+      "price": 599,
+      "description": "Name : Banarasi Jequard Saree Saree Fabric : Cotton Slub  Blouse : Separate Blouse Piece Blouse Fabric : Art Silk Pattern : Printed",
+      "category": "women's clothing",
+      "image": "https://images.meesho.com/images/products/146536606/ts88i_512.webp",
+      "rating": 3
+      
+    },
+    {
+      "id": 8,
+      "title": "Fancy Unique Men Track Pants",
+      "price": 499,
+      "description": "Name : Fancy Unique Men Track Pants Fabric : Cotton Blend Pattern : Printed",
+      "category": "men's clothing",
+      "image": "https://images.meesho.com/images/products/114683002/wimr2_512.webp",
+      "rating": 3.7
+      
+    },
+    {
+      "id": 9,
+      "title": "GREY JEANS ",
+      "price": 749,
+      "description": "Name : GREY JEANS Fabric : Denim Pattern : Dyed/Washed",
+      "category": "men's clothing",
+      "image": "https://images.meesho.com/images/products/79800732/zdcji_512.webp",
+      "rating": 3.7
+      
+    },
+    {
+      "id": 10,
+      "title": "I'd 116 Watches",
+      "price": 1599,
+      "description": "Standalone Phone Watch : Smart watch connected Android phone via Bluetooth or with GSM 2G SIM Card can be used as a cellphone to make/answer calls, send/get message directly. Multifunctional Smartwatch: Sport health: Pedometer, Calories Calculation, Sedentary Reminder, Sleep Monitoring;",
+      "category": "electronics",
+      "image": "https://images.meesho.com/images/products/155783936/7eioi_512.webp",
+      "rating": 4.3
+      
+    },
+    {
+      "id": 11,
+      "title": "Wonderful Pot & Pan Sets",
+      "price": 1338,
+      "description": "We designed this Induction Bottom Cookware to fit your everyday cooking needs. Whether you are a professional chef or love cooking at home, this pot will become one of your favourite items in your entire kitchen! This beautifully designed to cook in it. ",
+      "category": "Home and kitchen",
+      "image": "https://images.meesho.com/images/products/45085356/rivgc_512.webp",
+      "rating": 3.5
+    },
+    {
+      "id": 12,
+      "title": "Unique designer Brown color anchor shape pendulum ",
+      "price": 899,
+      "description": "Material- Plastic, Color-Brown,Size-38*28cms,elegant look anchor shape pendulum wall clock for living room,drawing room,bedroom,office,home for him/her for gifting",
+      "category": "electronics",
+      "image": "https://images.meesho.com/images/products/26099886/a7q4f_512.webp",
+      "rating": 4.1
+    },
+    {
+      "id": 14,
+      "title": "Facetious Dabbi brushes set of 12 different brushes (Pack of 12)",
+      "price": 149,
+      "description": "Name : Facetious Dabbi brushes set of 12 different brushes (Pack of 12) Product Name : Facetious Dabbi brushes set of 12 different brushes",
+      "category": "women's ",
+      "image": "https://images.meesho.com/images/products/161637873/2ftzh_512.webp",
+      "rating": 4.2,
+      "filter":"Girls"
+    },
+    {
+      "id": 15,
+      "title": "Face Makeup combo of fixer + primer+ Foundation + Contour stick+ Highlighter (Blossom) + Puff ( 6items in The Set (Makeup Kit)",
+      "price": 249,
+      "description": "Product Name : Face Makeup combo of fixer + primer+ Foundation + Contour stick+ Highlighter (Blossom) + Puff ( 6items in The Set (Makeup Kit)",
+      "category": "women's",
+      "image": "https://images.meesho.com/images/products/107882184/ci2oi_512.webp",
+      "rating": 3.6
+      
+    },
+    {
+      "id": 16,
+      "title": "Ravishing Fashionable Women Backpacks",
+      "price": 395,
+      "description": "Name : Ravishing Fashionable Women Backpacks Material : PU No. of Compartments : 1 Multipack : 3",
+      "category": "women's ",
+      "image": "https://images.meesho.com/images/products/48200234/q2nav_512.webp",
+      "rating": 2.9
+      
+    },
+    {
+      "id": 17,
+      "title": "BALL CRYSTAL ROUND PENDANT CHOKER JEWELLERY SET",
+      "price": 289,
+      "description": "Accentuate your feminine grace by putting on this necklace set from ma bhawani creation and let your look be exceptionally beautiful club this necklace set with traditional attire to look gorgous in time an exclusive accessories",
+      "category": "women's ",
+      "image": "https://images.meesho.com/images/products/164036197/gqvkb_512.webp",
+      "rating": 3.8
+      
+    },
+    {
+      "id": 18,
+      "title": "Spinny Men's Wallet BMW Combo Multicolor Pack of 2 ",
+      "price": 195,
+      "description": "Name : Spinny Men's Wallet BMW Combo Multicolor Pack of 2 Material : Faux Leather/Leatherette No. of Compartments : 2 Pattern : Solid",
+      "category": "men's ",
+      "image": "https://images.meesho.com/images/products/168232013/fvvac_512.webp",
+      "rating": 4.7
+      
+    },
+    {
+      "id": 19,
+      "title": "UMAX MEN'S STYLIST&COMFORTABLE LASTIK SANDAL",
+      "price": 416,
+      "description": "Umax Brings another SANDAL that will make the Loyal Customers of Umax Look Stand Apart. Umax has always believed in offering customers the best of products that are very very trendy, Buy these latest trendy SANDAL and make yourself look stand Apart as we Always believe that Winners are the Choosers.",
+      "category": "men's ",
+      "image": "https://images.meesho.com/images/products/139594304/cb1pf_512.webp",
+      "rating": 4.5
+      
+    },
+    {
+      "id": 20,
+      "title": "Redmi Go Back cover",
+      "price": 166,
+      "description": "Readmi Go Back Cover Soft Cover Country of Origin : India",
+      "category": "Phone",
+      "image": "https://images.meesho.com/images/products/78591203/akim8_512.webp",
+      "rating": 3.6
+    },
+    {
+      "id": 21,
+      "title": "Cute Stylus Girls Frocks",
+      "price": 345,
+      "description": "Cute Stylus Girls Frocks with beautifull print Country of Origin : India",
+      "category": "child",
+      "image": "https://images.meesho.com/images/products/151023315/4q15u_512.webp",
+      "rating": 3.6
+      
+    }
+  ],
+
+
+  "cart": [
+    {
+      "id": 2
+    }
+  ],
+  "address": [
+    {
+      "firstname": "faizan",
+      "lastname": "hamid",
+      "address": "Dangiwach",
+      "city": "srinagar",
+      "state": "kashmir",
+      "country": "pakistan",
+      "zip": "193303",
+      "id": 1
+    }
+  ],
+  "card": [
+    {
+      "cardname": "Faizan",
+      "cardnumber": "11111",
+      "cvv": "123",
+      "expiry": "444",
+      "id": 1
+    }
+  ]
+}
