@@ -17,6 +17,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './AddressForm';
 import Review from './ReviewPage';
 import PaymentForm from './Payment';
+import { Cartcontext } from '../context/CartContext';
+import {CheckCircleIcon} from'@chakra-ui/icons';
+ 
 // import PaymentForm from './PaymentForm';
 // import Review from './Review';
 // import cry from '../Body/components/images/cry.jpg'
@@ -63,6 +66,16 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
+  const Globalstate = React.useContext(Cartcontext);
+  const state = Globalstate.state;
+  const dispatch = Globalstate.dispatch;
+  console.log(Globalstate);
+
+  const total = state.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+  console.log("lll", state); 
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -85,7 +98,7 @@ export default function Checkout() {
       </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Typography component="h1" variant="h4" align="center">
+          <Typography component="h1" variant="h4" align="center" color={'#FFA726 '}>
             CHECK-OUT
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
@@ -97,6 +110,9 @@ export default function Checkout() {
           </Stepper>
           {activeStep === steps.length ? (
             <React.Fragment>
+               <Typography variant="h5" gutterBottom>
+                Your Amount ₹ {total} Has Successfully Paid <CheckCircleIcon color={'#4CAF50'} width={'40px'}/>
+              </Typography>
               <Typography variant="h5" gutterBottom>
                 Thank you for your order.
               </Typography>
@@ -119,7 +135,7 @@ export default function Checkout() {
                 <Button
                   variant="contained"
                   onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
+                  sx={{ mt: 3, ml: 1 ,backgroundColor:'#FBC02D',color:'black'}}
                 >
                   {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                 </Button>

@@ -8,6 +8,8 @@ import { SortFilter } from './SortFilterPage'
 import { Search2Icon,ArrowForwardIcon } from '@chakra-ui/icons'
 import Fotter from './FotterPage'
 import { Pagination } from './Pagination'
+import { Navigate } from 'react-router-dom'
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 export const Products = () => {
     const [data,setData]=useState([])
@@ -16,12 +18,14 @@ export const Products = () => {
     const [order,setOrder]=useState('')
     const [total,setTotal]=useState(0)
     const [filter,setFilter]=useState("")
+    const [loading,setLoading]=useState(false)
    let sort ='price'  
    let limit = 6
 let lastPage = Math.ceil(total/limit)
 
 
 const getData=()=>{
+    setLoading(true)
     const params =select ? {q:select} : {}
     let apiUrl=`http://localhost:8080/Add`
 
@@ -37,11 +41,21 @@ const getData=()=>{
         
         axios.get(apiUrl,{params})
         .then((res)=>{
+     
             console.log("gggg",res.data)
+            const updatedFood = res.data.map((ele) => ({
+                ...ele,
+                quantity: 1, // add a quantity field with default value of 1
+              }))
+
+            // console.log("gggg",res.data)
+            console.log("DDDDDDDDDD",updatedFood)
+            
+            setData(updatedFood)
             console.log(res.headers.get('X-Total-Count'))
             setTotal(Number(res.headers.get('X-Total-Count')))
 
-            setData(res.data)
+            setLoading(false)
          
         })
        
@@ -77,18 +91,12 @@ useEffect(()=>{
     getData(select)
 },[select])
 
-  return (
+
+  return loading ? (<CircularProgress isIndeterminate color='green.300' />) : (
     <div>
-        {/* <Link to='/products'></Link> */}
-        {/* <Heading>Products For You</Heading> */}
-         
-        <Divider border={"0.5px solid gray.600"} mt={"15px"} mb={"15px"}/>
- {/* <Image src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-home-header.jpg"/> */}
-
-
-  
+           
      {/* ****************************Search Bar*************************************** */}
-     <InputGroup>     
+     <InputGroup mt={'35px'}>     
        <Text ml={'200px'} fontWeight={'bold'} fontFamily={"Cursive"}  fontSize={{ base: '15px', md: '25px',xl:'35px' }}>SHOP THE EASY WAY ...</Text>
         <Input ml={"40px"} width={500} border={'1px solid black'} placeholder= "Search here" type="text" onChange={(e)=>setSelect(e.target.value)}/> 
         <InputRightAddon children={<Search2Icon/>} />
@@ -98,10 +106,10 @@ useEffect(()=>{
 
 <Box w={"1100px"} h={"100%"}  ml={"100px"} display={"grid"} gridTemplateColumns={"repeat(2,0px)"} >
 
- <Box w={"350px"} h={"860px"}  border={"1px solid #E7EEFF"} borderRadius={"10px"} > <SortFilter handelSort={handelSort} order={order} handelFilter={handelFilter}/> </Box>
+ <Box w={"350px"} h={"860px"}   borderRadius={"10px"} > <SortFilter handelSort={handelSort} order={order} handelFilter={handelFilter}/> </Box>
 
  <SimpleGrid columns={{base:1,sm:2,lg:3}}>
-<Box w={"700px"} h={"100%"} border={"1px solid black"} ml={"400px"} borderRadius={"10px"} columns={{base:1,sm:2,lg:3}} > 
+<Box w={"700px"} h={"100%"}  ml={"400px"} borderRadius={"10px"} columns={{base:1,sm:2,lg:3}} > 
 
     <Grid gridTemplateColumns="repeat(3,230px)">
     

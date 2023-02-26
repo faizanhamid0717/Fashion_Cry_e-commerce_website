@@ -1,45 +1,56 @@
 
 
-import { createContext } from 'react';
-import { useState } from 'react';
-export const CartContext = createContext();
+import { createContext,  useReducer } from "react";
 
 
-// import { CartContext } from './CartContext';
+export const  Cartcontext=createContext()
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  const  [count,setCount] = useState(0)
+const Context =({children})=>{
+    const reducer = (state, action) => {
+        switch (action.type) {
+          case "ADD":
+            const tempstate = state.filter((item) => action.payload.id === item.id);
+            if (tempstate.length > 0) {
+              return state;
+            } else {
+              return [...state, action.payload];
+            }
+          case "INCREASE":
+            const tempstate1 = state.map((item) => {
+              if (item.id === action.payload.id) {
+                return { ...item, quantity: item.quantity + 1 };
+              } else {
+                return item;
+              }
+            });
+            return tempstate1;
+          case "DECREASE":
+            const tempstate2 = state.map((item) => {
+              if (item.id === action.payload.id) {
+                return { ...item, quantity: item.quantity - 1 };
+              } else {
+                return item;
+              }
+            });
+            return tempstate2;
+          case "REMOVE":
+            const tempstate3 = state.filter(
+              (item) => item.id !== action.payload.id
+            );
+    
+            return tempstate3;
+    
+          default:
+            return state;
+        }
+    }
 
-  const addToCart = (item) => {
-    // e.preventDefault()
-    setCart([...cart,item]);
-    // console.log(cart)
-  };
-
-  const handelCount=(val,id)=>{
-    let updatedCart = cart.map(ele => 
-      ele.id == id ? {...ele,qty : ele.qty + val} : ele
+    const [state, dispatch] = useReducer(reducer, []);
+    const info = { state, dispatch };
+    return (
+      <Cartcontext.Provider value={info}>{children}</Cartcontext.Provider>
     );
-    
-     setCart(updatedCart)
-    
-  }
 
 
-  const removeFromCart = (id) => {
-    const newCart = cart.filter((ele) => ele.id !== ele.id);
-    setCart(newCart);
-   
-  };
-
-  const clearCart = () => {
-    setCart([]);
-  };
-
-  return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart ,handelCount}}>
-      {children}
-    </CartContext.Provider>
-  );
-};
+}
+export default Context

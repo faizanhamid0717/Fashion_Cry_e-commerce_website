@@ -12,16 +12,16 @@ export const HomePage= () => {
   return (
     <div>
       
-       <Text fontSize={"5xl"}>#EXPRESSYOU</Text>
+       <Text mt={'20px'} fontSize={"5xl"}>#EXPRESSYOU</Text>
 
        <Image width="1270px" src="https://www.express.com/content/dam/express/2023/projects/web/home-landing/02-february/0215-digital-23919-hp-6pm/-dt/jeans-dt.jpg"/> 
        {/* <Image width="600px" src="https://www.express.com/content/dam/express/2023/projects/web/home-landing/02-february/0215-digital-23919-hp-6pm/-dt/jeans-dt.jpg"/> */}
     
-
+       <Image h={"100px"}src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-hiddengems-header.jpg"/>
    <VideoSlider/>
-   <Image h={"100px"}src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-hiddengems-header.jpg"/>
+   
 
-   <Box display={"flex"} ml={"10px"}>
+   <Box display={"flex"} ml={"10px"} mb={'100px'}>
 <Image w={"310px"} src='https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-ethnicwear-jewellery.jpg'/>
 <Image  w={"310px"} src='https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-ethnicwear-sarees.jpg'/>
 <Image  w={"310px"} src='https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-ethnicwear-men.jpg'/>
@@ -50,7 +50,7 @@ export const HomePage= () => {
   </Box> 
 </Box>
 <br/>
-<Button bg={'#F43397'} w={"350px"} h={"50px"} color={"white"} fontSize={"xl"}>Download The EXPRESS App</Button>
+<Button bg={'#F5B041'} w={"350px"} h={"50px"} color={"white"} fontFamily={"Cursive"} fontSize={"xl"}>Download The FASHION CRY App</Button>
  </Box>
  
   <Spacer />
@@ -82,7 +82,7 @@ export const HomePage= () => {
 <Box ml={"240px"}  h={550} w={800} p={"30px"} 
 bgImage="https://thumbs.dreamstime.com/b/design-template-marble-texture-gold-geometric-frame-abstract-golden-background-set-vector-elegant-black-brochure-141784390.jpg"
 >
-<Heading pl={"200px"} fontSize={"6xl"} fontFamily={"Cursive"} color={"#F43397"}>Fashion Store</Heading>
+<Heading pl={"200px"} fontSize={"6xl"} fontFamily={"Cursive"} color={"#F5B041 "}>Fashion Store</Heading>
 
 <Box display={"flex"} gap={"15px"} >
 <Box  h={280} w={250}>
@@ -105,7 +105,7 @@ bgImage="https://thumbs.dreamstime.com/b/design-template-marble-texture-gold-geo
   bgImage="https://images.meesho.com/images/pow/downloadBannerDesktop.webp"
   bgSize={"800px"}
 >
-  <Box  ml={"150px"} p={"20px"} pt={"130px"} h={450} w={650} fontSize={"5xl"} textAlign={"right"} color={"#F43397"}> 
+  <Box  ml={"150px"} p={"20px"} pt={"130px"} h={450} w={650} fontSize={"5xl"} textAlign={"right"} color={"#F5B041"}> 
   Start your Online Business with Zero Investment
 
 <Box display={"flex"} gap={"40px"}  pt={"40px"} pl={"170px"} >
@@ -124,8 +124,8 @@ bgImage="https://images.meesho.com/images/pow/supplyBannerDesktop.webp"
 bgSize={"790px"}
 >
 
-    <Box h={150} w={600} color={"white"} pt={"40px"}>
-        <Heading >Register as a EXPRESS Supplier</Heading>
+    <Box h={150} w={600} color={"white"} pt={"40px"} >
+        <Heading fontSize={'30px'} >Register as a FASHION CRY Supplier</Heading>
         <br/>
         <Text pr={"116px"}>Sell your products to crores of customers at 0% commission</Text>
     <Box  display={"flex"} gap={"50px"} pt={"15px"}>
@@ -149,9 +149,6 @@ bgSize={"790px"}
 </Box>
  
  
-{/* *****************************Products******************************** */}
-    {/* <Products/> */}
-
 {/* ******************************Fotter****************************** */}
   <br/>
   <br/>

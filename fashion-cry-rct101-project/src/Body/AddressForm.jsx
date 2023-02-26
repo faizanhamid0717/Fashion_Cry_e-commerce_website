@@ -33,7 +33,7 @@ export default function AddressForm() {
     
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom fontWeight={'700'}>
         Shipping address
       </Typography>
       <Grid container spacing={3}>
@@ -141,9 +141,12 @@ export default function AddressForm() {
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
             label="Use this address for payment details"
           /> */}
-          <Button  bg={'#F9E79F'} onClick={handelSubmit}>Submit</Button>
+         <Button sx={{ mt: 3, mb: 2 , backgroundColor:'#FBC02D',color:'black' }} onClick={handelSubmit}>Submit</Button>
         </Grid>
+        
       </Grid>
+      
     </React.Fragment>
+    
   );
 }

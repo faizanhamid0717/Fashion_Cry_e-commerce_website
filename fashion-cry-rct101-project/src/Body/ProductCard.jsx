@@ -11,10 +11,14 @@ import {
     Tooltip,
     Button
   } from '@chakra-ui/react';
+import { useContext } from 'react';
   import { BsStar, BsStarFill, BsStarHalf ,} from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
   import {Link,useParams} from "react-router-dom"
+import { Cartcontext } from '../context/CartContext';
 import Fotter from './FotterPage';
+import { StarIcon } from '@chakra-ui/icons'
+
   const data = {
     isNew: true,
     imageURL:
@@ -28,6 +32,7 @@ import Fotter from './FotterPage';
 
   
   function ProductCart({title,price, image,category,rate,id}) {
+
 
     return (
        
@@ -79,29 +84,19 @@ import Fotter from './FotterPage';
                 {title}
               </Box>
 
-              <Link to="/cart">
-              <Button
-                label="Add to cart"
-                bg="white"
-                placement={'top'}
-                color={'gray.800'}
-                fontSize={'1.2em'}>
-                <chakra.a href={'#'} display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-                </chakra.a>
-              </Button>
-              </Link>
+             
+
             </Flex>
   
             <Flex justifyContent="space-between" alignContent="center">
-     <Box alignItems="center"border={"1px solid green"}
-      h={"35px"} w={"60px"} fontSize={"xl"} borderRadius={"10px"} 
-      bgColor={"#23BB75"} color={"white"}>
+     <Box alignItems="center"
+      h={"25px"} w={"90px"} fontSize={"sm"} borderRadius={"5px"} marginRight={'5px'}
+      bgColor={"#D4EFDF"} color={"black"}>
         {rate}
-        
+        <StarIcon height={'10px'} color={'#FBC02D'} />
       </Box>
               {/* <Rating rating={data.rating} numReviews={data.numReviews} rate={ProductCart.rat}/> */}
-              <Box fontSize="xl" color={useColorModeValue('black')}fontWeight={"bold"} 
+              <Box fontSize="xl" color={useColorModeValue('black')}
               >
                 <Box as="span" color={'black'} fontSize="xxl" >
                 ₹
@@ -109,6 +104,7 @@ import Fotter from './FotterPage';
                 {price}
               </Box>
               {/* <Link to={`/products/${id}`}>more info</Link> */}
+              <Button ml={'10px'} bg="#AED6F1" fontSize={'13px'} height={'25px'}>Buy Now</Button>
             </Flex>
           </Box>
         </Box>

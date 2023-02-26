@@ -9,7 +9,6 @@
       "category": "women's clothing",
       "image": "https://images.meesho.com/images/products/17898117/fbdc9_512.webp",
       "rating": 3.9
-      
     },
     {
       "id": 2,
@@ -20,7 +19,6 @@
       "category": "women's clothing",
       "image": "https://images.meesho.com/images/products/20624112/24dd6_512.webp",
       "rating": 4.1
-      
     },
     {
       "id": 3,
@@ -31,7 +29,6 @@
       "category": "men's clothing",
       "image": "https://images.meesho.com/images/products/111658893/mmc86_512.webp",
       "rating": 3.7
-      
     },
     {
       "id": 4,
@@ -41,7 +38,6 @@
       "category": "men's clothing",
       "image": "https://images.meesho.com/images/products/106912891/zmngq_512.webp",
       "rating": 4.2
-     
     },
     {
       "id": 5,
@@ -51,7 +47,6 @@
       "category": "women's clothing",
       "image": "https://images.meesho.com/images/products/59924591/auoxl_512.webp",
       "rating": 4.6
-      
     },
     {
       "id": 6,
@@ -61,7 +56,6 @@
       "category": "women's sleepers",
       "image": "https://images.meesho.com/images/products/94090879/qj1i6_512.webp",
       "rating": 3.9
-      
     },
     {
       "id": 7,
@@ -71,7 +65,6 @@
       "category": "women's clothing",
       "image": "https://images.meesho.com/images/products/146536606/ts88i_512.webp",
       "rating": 3
-      
     },
     {
       "id": 8,
@@ -81,7 +74,6 @@
       "category": "men's clothing",
       "image": "https://images.meesho.com/images/products/114683002/wimr2_512.webp",
       "rating": 3.7
-      
     },
     {
       "id": 9,
@@ -91,7 +83,6 @@
       "category": "men's clothing",
       "image": "https://images.meesho.com/images/products/79800732/zdcji_512.webp",
       "rating": 3.7
-      
     },
     {
       "id": 10,
@@ -101,7 +92,6 @@
       "category": "electronics",
       "image": "https://images.meesho.com/images/products/155783936/7eioi_512.webp",
       "rating": 4.3
-      
     },
     {
       "id": 11,
@@ -129,7 +119,7 @@
       "category": "women's ",
       "image": "https://images.meesho.com/images/products/161637873/2ftzh_512.webp",
       "rating": 4.2,
-      "filter":"Girls"
+      "filter": "Girls"
     },
     {
       "id": 15,
@@ -139,7 +129,6 @@
       "category": "women's",
       "image": "https://images.meesho.com/images/products/107882184/ci2oi_512.webp",
       "rating": 3.6
-      
     },
     {
       "id": 16,
@@ -149,7 +138,6 @@
       "category": "women's ",
       "image": "https://images.meesho.com/images/products/48200234/q2nav_512.webp",
       "rating": 2.9
-      
     },
     {
       "id": 17,
@@ -159,7 +147,6 @@
       "category": "women's ",
       "image": "https://images.meesho.com/images/products/164036197/gqvkb_512.webp",
       "rating": 3.8
-      
     },
     {
       "id": 18,
@@ -169,7 +156,6 @@
       "category": "men's ",
       "image": "https://images.meesho.com/images/products/168232013/fvvac_512.webp",
       "rating": 4.7
-      
     },
     {
       "id": 19,
@@ -179,7 +165,6 @@
       "category": "men's ",
       "image": "https://images.meesho.com/images/products/139594304/cb1pf_512.webp",
       "rating": 4.5
-      
     },
     {
       "id": 20,
@@ -198,14 +183,6 @@
       "category": "child",
       "image": "https://images.meesho.com/images/products/151023315/4q15u_512.webp",
       "rating": 3.6
-      
-    }
-  ],
-
-
-  "cart": [
-    {
-      "id": 2
     }
   ],
   "address": [

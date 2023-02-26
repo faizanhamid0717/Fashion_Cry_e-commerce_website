@@ -10,7 +10,7 @@ import {
   useDisclosure,
   Heading,
 } from '@chakra-ui/react'
-import React, { useState ,useEffect} from 'react'
+import React, { useState ,useEffect, useContext} from 'react'
 import axios from 'axios'
 // import { Grid, GridItem ,Box,Button, Text,Image,Divider,Link,InputGroup,Input,InputRightAddon,Icon, SimpleGrid} from '@chakra-ui/react'
 import {
@@ -25,9 +25,14 @@ import {
   Tooltip,
   Button,Input,Link,Text
 } from '@chakra-ui/react';
+import { StarIcon } from '@chakra-ui/icons'
 import { FiShoppingCart } from 'react-icons/fi';
 import { Pagination } from '../Body/Pagination';
 import { SortFilter } from '../Body/SortFilterPage';
+import { AuthContext } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
+import { ChevronDownIcon,ArrowUpIcon,ArrowDownIcon,DeleteIcon } from '@chakra-ui/icons'
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 const data = {
   isNew: true,
@@ -44,6 +49,8 @@ const data = {
 export const AdminPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
+  const {isAuth,Logout}=useContext(AuthContext)
+  const [loading,setLoading]=useState(false)
 
   const [admin,setAdmin]=useState([])
   const [total,setTotal]=useState()
@@ -67,7 +74,7 @@ export const AdminPage = () => {
   // *********************GET DATA***************************
 
   const FetchAdmin=()=>{
-
+    setLoading(true)
     let apiUrl=(`http://localhost:8080/Add`)
 
   if(order){
@@ -76,12 +83,13 @@ export const AdminPage = () => {
       apiUrl=`http://localhost:8080/Add?_page=${page}&_limit=${limit}`
   }
   return (
-
+   
     axios.get(apiUrl)
     .then((res)=>{
       setTotal(Number(res.headers.get("X-Total-Count")))
       console.log("Admin data",res.data)
       setAdmin(res.data)
+      setLoading(false)
     })
   )
   }
@@ -115,20 +123,28 @@ const handelForm=()=>{
 }
 
 
-  return (
+ 
+return  loading ? (<CircularProgress isIndeterminate color='green.300' />)  : (
 
     <>
-    <div style={{border:'1px solid green' ,width:'1000px' ,margin:'auto' 
-    ,height:'100px' ,display:'flex',justifyContent:'space-around', marginTop:'40px'}}>AdminPage
+    <Box style={{width:'850px' ,margin:'auto' 
+    ,height:'100px' ,display:'flex',justifyContent:'space-evenly', marginTop:'40px'}}
+   
+    >
 
-    <Button value ="dsec"  bg={'#F9E79F'} isDisabled={order=='desc'} m={'20px'} onClick={()=>handelSort("desc")}>Price (High to Low)</Button>
-    <Button value ="asc"  bg={'#F9E79F'} isDisabled={order=='asc'} m={'20px'} onClick={()=>handelSort("asc")}>Price (Low to High)</Button>
+    <Button value ="dsec"  bg={'#FBC02D'} isDisabled={order=='desc'} m={'20px'} onClick={()=>handelSort("desc")}>Price (High to Low) <ArrowDownIcon/> </Button>
+    <Button value ="asc"  bg={'#FBC02D'} isDisabled={order=='asc'} m={'20px'} mr={'15px'} onClick={()=>handelSort("asc")}>Price (Low to High) <ArrowUpIcon/></Button>
 
-    <Button>Total : {total}</Button>
+    <Button mt={'20px'} fontSize={'20px'} fontWeight={'900'} mr={'15px'} bg={'#FBC02D'} p={'15px'}>Total Products : {total}</Button>
 
-      <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-        Open
+      <Button  ref={btnRef} mt={'20px'} colorScheme='teal' bg={'#FBC02D'} color="black" onClick={onOpen}>
+      Add Products 
       </Button>
+      
+     
+      <Button value ="dsec"  bg={'#E53935'} color={"white"} isDisabled={order=='desc'} m={'20px'} onClick={Logout} >Logout</Button>
+    
+    
       <Drawer
         isOpen={isOpen}
         placement='right'
@@ -139,7 +155,7 @@ const handelForm=()=>{
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Add Products Here ...</DrawerHeader>
 
           <DrawerBody >
             <Input m={'10px'} placeholder='title'  onChange={(e)=>setForm({...form,title:e.target.value})}
@@ -165,16 +181,16 @@ const handelForm=()=>{
             <Button variant='outline' mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme='blue' onClick={handelForm}>Save</Button>
+            <Button colorScheme='blue' bg={'#FBC02D'} onClick={handelForm}>Save</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
     
-    </div>
+    </Box>
 
     <div>
 
-    <div style={{display:'grid' , gridTemplateColumns:"repeat(4,1fr)" ,border:'1px solid red',gap:'20px' ,width:'1000px' ,margin:'auto'}}>
+    <Box style={{display:'grid' , gridTemplateColumns:"repeat(4,1fr)" ,gap:'20px' ,width:'1000px' ,margin:'auto'}}>
     {admin?.map((ele)=>
 
       <div key={ele.id} >
@@ -218,6 +234,8 @@ const handelForm=()=>{
               <Box
                 fontSize="m"
                 // color={useColorModeValue('gray.500', 'gray.100')} mb={"15px"} 
+                color={('gray.500', 'gray.500')}
+                p={'10px'}
                 fontWeight="semibold"
                 as="h3"
                 lineHeight="tight"
@@ -225,38 +243,27 @@ const handelForm=()=>{
                 {ele.title}
               </Box>
 
-              <Link to="/cart">
-              <Button
-                label="Add to cart"
-                bg="white"
-                placement={'top'}
-                color={'gray.800'}
-                fontSize={'1.2em'}>
-                <chakra.a href={'#'} display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-                </chakra.a>
-              </Button>
-              </Link>
+             
             </Flex>
   
             <Flex justifyContent="space-between" alignContent="center">
-     <Box alignItems="center"border={"1px solid green"}
-      h={"30px"} w={"60px"} fontSize={"xl"} borderRadius={"10px"} 
-      bgColor={"#23BB75"} color={"white"}>
+     <Box alignItems="center"
+      h={"25px"} w={"90px"} fontSize={"sm"} borderRadius={"5px"} 
+      bgColor={"#D4EFDF"} color={"black"}>
         {ele.rating}
-        
+        <StarIcon height={'10px'} color={'#FBC02D'} />
       </Box>
               {/* <Rating rating={data.rating} numReviews={data.numReviews} rate={ProductCart.rat}/> */}
               <Box fontSize="xl" 
               // color={useColorModeValue('black')}fontWeight={"bold"} 
               >
-                <Box as="span" color={'black'} fontSize="xxl" ml={'20px'}>
+                <Box as="span" color={'black'} fontSize="xxl" ml={'10px'} >
                 ₹
                 </Box>
                 {ele.price}
               </Box>
               {/* <Link to={`/products/${id}`}>more info</Link> */}
-              <Button ml={'15px'} onClick={()=>handelDelete(ele.id)}>Delete</Button>
+              <Button ml={'15px'} bg="#EC7063" fontSize={'13px'} height={'25px'} color={'white'} onClick={()=>handelDelete(ele.id)}><DeleteIcon/></Button>
             </Flex>
             
           </Box>
@@ -268,7 +275,7 @@ const handelForm=()=>{
        </div>
    
     )}
-   </div>  
+   </Box>  
 
     <Pagination page={page} handelPage={handelPage} lastPage={lastPage}/>
     </div>

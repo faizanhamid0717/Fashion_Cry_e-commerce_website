@@ -1,7 +1,17 @@
 
-import { } from '@chakra-ui/icons'
-import { ReactNode } from 'react';
 
+import { ReactNode } from 'react';
+import { Divider, Button, Center } from "@chakra-ui/react";
+import {
+  FaTwitter,
+  FaYoutube,
+  FaInstagram,
+  FaLinkedin,
+  FaGoogle,
+  FaApple,
+  FaGooglePlay,
+  FaMicrosoft,
+} from "react-icons/fa";
 import {
   Box,
   Container,
@@ -14,6 +24,7 @@ import {
   
 } from '@chakra-ui/react';
 import cry from "../components/images/cry.jpg"
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -29,7 +40,7 @@ export default function Fotter() {
   return (
     
     <Box
-      // bg={useColorModeValue('gray.50', 'gray.50')}
+     bgColor={"#B2DFDB"}
      borderTop={'1px solid black'} borderBottom={'1px solid black'}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
@@ -39,7 +50,7 @@ export default function Fotter() {
           <Stack spacing={6}>
             <Box>
            
-              {/* <Box fontSize={"5xl"} fontWeight={"bold"} color={'#F43397'}>EXPRESS</Box> */}
+              
               <Image width="250px" height="150px" src={cry}/>
 
             </Box>
@@ -50,7 +61,7 @@ Cash on Delivery | Free Delivery
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Product</ListHeader>
-            <Link href={'#'}>Overview</Link>
+            <Link href={'#'} >Overview</Link>
             <Link href={'#'}>Features</Link>
             <Link href={'#'}>Tutorials</Link>
             <Link href={'#'}>Pricing</Link>
@@ -74,11 +85,26 @@ Cash on Delivery | Free Delivery
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Follow Us</ListHeader>
-            <Link href={'#'}>Facebook</Link>
-            <Link href={'#'}>Twitter</Link>
-            <Link href={'#'}>Dribbble</Link>
-            <Link href={'#'}>Instagram</Link>
-            <Link href={'#'}>LinkedIn</Link>
+            
+            <Button color={"blue"} label={"Twitter"} href={"#"} size="xs">
+                <FaTwitter />
+            </Button>
+          
+            <Button color={"red"} label={"YouTube"} href={"#"} size="xs">
+                <FaYoutube />
+              </Button>
+
+              <Button color={"red"} label={"Instagram"} href={"#"} size="xs">
+                <FaInstagram />
+              </Button>
+
+              <Button color={"blue"} label={"linkedin"} href={"#"} size="xs">
+                <FaLinkedin />
+              </Button>
+
+              <Button color={"blue"} label={"Google"} href={"#"} size="xs">
+                <FaGoogle />
+              </Button>
           </Stack>
         </SimpleGrid>
       </Container>

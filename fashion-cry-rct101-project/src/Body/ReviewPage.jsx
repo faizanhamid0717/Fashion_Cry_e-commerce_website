@@ -7,39 +7,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
-
-const products = [
-  {
-    name: 'Product 1',
-    desc: 'A nice thing',
-    price: '$9.99',
-  },
-  {
-    name: 'Product 2',
-    desc: 'Another thing',
-    price: '$3.45',
-  },
-  {
-    name: 'Product 3',
-    desc: 'Something else',
-    price: '$6.51',
-  },
-  {
-    name: 'Product 4',
-    desc: 'Best thing of all',
-    price: '$14.11',
-  },
-  { name: 'Shipping', desc: '', price: 'Free' },
-];
-
-// const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-// const payments = [
-//   { name: 'Card type', detail: 'Visa' },
-//   { name: 'Card holder', detail: 'Mr John Smith' },
-//   { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-//   { name: 'Expiry date', detail: '04/2024' },
-// ];
-
+import { Cartcontext } from '../context/CartContext';
+import { Image, Img,Text } from '@chakra-ui/react';
+import { Box } from '@mui/system';
 
 
 export default function Review() {
@@ -47,6 +17,16 @@ export default function Review() {
   const [pay,setPay]=React.useState([])
   console.log("my address is",address)
    console.log("my payment",pay)
+
+   const Globalstate = React.useContext(Cartcontext);
+   const state = Globalstate.state;
+   const dispatch = Globalstate.dispatch;
+   console.log(Globalstate);
+
+   const total = state.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+  console.log("lll", state); 
 
 
 const FetchAddress=()=>{
@@ -74,21 +54,35 @@ React.useEffect(()=>{
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom fontWeight={'700'}>
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
+        {state.map((product) => (
+          
+          // <ListItem key={product.id} sx={{ py: 1, px: 0 }}>
+          //   <Img w={'70px'} mr={'10px'} src={product.image}/>
+          //   <ListItemText fontWeight={'bold'} fontSize={'10px'} primary={product.title} />
+          //   <ListItemText fontWeight={'bold'} primary={product.quantity} />
+          //   <Typography variant="body2" fontSize={'20px'} fontWeight={'bold'}>{product.price}</Typography>
+          // </ListItem>
+          <Box border={'.5px solid gray'} height={'100px'} display="grid " borderRadius={'5px'}
+           gridTemplateColumns={'repeat(4,1fr)'} gap={'5px'} mt={'10px'} alignItems={'center'}
+           box-shadow={ "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
+           >
+
+            <Box><Image  width={'72px'}src={product.image}/></Box>
+            <Box fontSize={'13px'} fontWeight={'600'}>Title : {product.title}</Box>
+            <Box fontWeight={'700'}> Qty : {product.quantity}</Box>
+            <Box fontWeight={'700'}> Price : ₹ {product.price}</Box>
+
+          </Box>
         ))}
 
         <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Total" />
-          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
+          {/* <Text fontSize={'15px'} fontWeight={'600'}>Total</Text> */}
+          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}> Total Amount :
+          ₹ {total}
           </Typography>
         </ListItem>
       </List>
@@ -97,7 +91,7 @@ React.useEffect(()=>{
     {address?.map((ele)=>
      
      <Grid  xs={12} sm={6}>
-       <Typography fontWeight={"bold"} fontSize={'25px'} color={"#F5B041"} variant="h6" gutterBottom sx={{ mt: 2 }}>
+       <Typography fontWeight={"bold"} fontSize={'25px'} color={"#4DB6AC"} variant="h6" gutterBottom sx={{ mt: 2 }}>
          Shipping Address
        </Typography>
        <Typography gutterBottom>Name : {ele.firstname}-{ele.lastname}</Typography>
@@ -112,7 +106,7 @@ React.useEffect(()=>{
 
 
         <Grid  xs={12} sm={5}>
-          <Typography variant="h6" gutterBottom sx={{ mt: 2 }} fontWeight={"bold"} fontSize={'25px'} color={"#F5B041"}>
+          <Typography variant="h6" gutterBottom sx={{ mt: 2 }} fontWeight={"bold"} fontSize={'25px'} color={"#4DB6AC"}>
             Payment details
           </Typography>
           <Grid container>

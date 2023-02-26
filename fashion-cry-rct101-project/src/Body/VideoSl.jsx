@@ -48,21 +48,21 @@ export default function VideoSl() {
       text:
         "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        'https://assets.ajio.com/cms/AJIO/WEB/D-UHP-trendscarousel-footwear-edited.jpg',
+        'https://assets.ajio.com/cms/AJIO/WEB/26022023-UHP-D-TopBanner-P6-PremiumBags-AdidasPuma-Min40.jpg',
     },
     {
       title: 'Design Projects 2',
       text:
         "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        'https://assets.ajio.com/cms/AJIO/WEB/D-UHP-trendscarousel-womensethnic-edited.jpg',
+        'https://assets.ajio.com/cms/AJIO/WEB/26022023-UHP-D-TopBanner-P3-Heels-CarltonLondonEverqupid-Starting799.jpg',
     },
     {
       title: 'Design Projects 3',
       text:
         "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        'https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-trendscarousel-kidswear.jpg',
+        'https://assets.ajio.com/cms/AJIO/WEB/26022023-UHP-D-TopBanner-P7-Kitchen-HomecentreExclusiveLane-Starting99.jpg',
     },
   ];
 
@@ -115,6 +115,7 @@ export default function VideoSl() {
           <Box
             key={index}
             height={'sm'}
+            mt={'100px'}
            
             position="relative"
             backgroundPosition="center"

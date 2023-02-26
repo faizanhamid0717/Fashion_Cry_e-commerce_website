@@ -10,6 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { Button } from '@mui/material';
 import axios from 'axios';
 
+
 export default function PaymentForm() {
     const [payment,setPayment]=React.useState({
       cardname:'',
@@ -28,7 +29,7 @@ export default function PaymentForm() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom fontWeight={'700'}>
         Payment method
       </Typography>
       <Grid container spacing={3}>
@@ -90,7 +91,7 @@ export default function PaymentForm() {
             control={<Checkbox color="secondary" name="saveCard" value="yes" />}
             label="Remember credit card details for next time"
           /> */}
-          <Button  onClick={handelCard}>Submit</Button>
+          <Button sx={{ mt: 3, mb: 2 , backgroundColor:'#FBC02D',color:'black' }} onClick={handelCard}>Submit</Button>
         </Grid>
       </Grid>
     </React.Fragment>

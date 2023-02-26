@@ -1,7 +1,7 @@
 
 import { FiShoppingCart } from 'react-icons/fi';
 import { Search2Icon,ArrowForwardIcon } from '@chakra-ui/icons'
-import { ReactNode, useState } from 'react';
+import { ReactNode, useContext, useState } from 'react';
 import { AllRoutes } from './AllRoutes';
 import cry from "./images/cry.jpg"
 
@@ -37,42 +37,44 @@ import {
 } from '@chakra-ui/react';
 
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-// import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { Cartcontext } from '../context/CartContext';
 
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-  
-
   const { loginWithRedirect,isAuthenticated,user } = useAuth0();
   const { logout } = useAuth0()
+
+  const Globalstate = useContext(Cartcontext);
+  const state = Globalstate.state;
+  const dispatch = Globalstate.dispatch;
+  console.log(Globalstate);
+
+  const total = state.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+  console.log("lll", state); 
+ 
+  const cartItemCount = state.reduce((count, item) => count + item.quantity,0);
+
   return (
     <>
+    <Menu>
       <Box  px={4} bg={'white'}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-evenly'} width={1100} margin={'auto'}>
+        <Flex h={16} alignItems={'center'} justifyContent={'space-around'} width={1100} margin={'auto'} height='80px'>
 
-          {/* <Box > <Image h={"35px"} w ={"100px"} mt={"20px"}src="https://th.bing.com/th?id=ODLS.416e21d2-89d8-43b8-8ab8-2db69d72773e&w=32&h=32&o=6&pid=13.1"/> </Box> */}
-       
           <Link to="/"> 
-         {/* <Box fontSize={"5xl"} fontWeight={"bold"} color={'black'}>FASHION CRY</Box> */}
-         <Image width="180px" height="65px" src={cry}/>
+         <Image width="370px" height="80px" src={cry}/>
          </Link>
 
          <InputGroup>     
-         <Image src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-home-header.jpg"/>
-       {/* <Text ml={'200px'} fontWeight={'bold'} fontFamily={"Cursive"}  fontSize={{ base: '15px', md: '25px',xl:'35px' }}>SHOP THE EASY WAY ...</Text> */}
-        {/* <Input ml={"40px"} width={500} border={'1px solid black'} placeholder= "Search here" type="text" />  */}
-        {/* <InputRightAddon children={<Search2Icon/>} /> */}
+         <Image height="55px"  src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-home-header.jpg"/>
        </InputGroup> 
  
-{/* 8******************************************************************************* */}
-
 {/* *****************************Download*************************************** */}
           <Menu>
-  <MenuButton as={Text} ml={"25px"} color={'gray.900'}>
+  <MenuButton fontWeight={'900'} ml={"25px"} color={'gray.900'}>
     Download App
   </MenuButton>
   <MenuList>
@@ -82,44 +84,47 @@ export default function Navbar() {
     <MenuItem><img width ="200px" src ="https://images.meesho.com/images/pow/appstore-icon-big.webp"/></MenuItem>
   </MenuList>
 </Menu>
-{/* 8******************************************************************************* */}
+{/* ******************************************************************************* */}
 
    { isAuthenticated ? (
-     <Box ml={"20px"} ><Button  bg={'white'} color={'gray.900'} onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+     <Box ml={"10px"} ><Button  bg={'white'} color={'gray.900'} onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
      Log Out
    </Button></Box>
    ) :(
-    <Box mr={"20px"}><Button  bg={'white'} color={'gray.900'}  onClick={() => loginWithRedirect()}>Log In</Button></Box>
+    <Box ><Button  bg={'white'} color={'gray.900'}  onClick={() => loginWithRedirect()}>Log In</Button></Box>
    )}
-      
-     
        
 
           <Flex alignItems={'center'}>
 
-            {/* *************************************************************************************************** */}
+            <Link to="/adminpage">
+            <Button mr={'15px'} bg={'white'} color={'gray.900'}>Admin</Button>
+            </Link>
 
-            <Link to='/adminpage'>Admin</Link>
-            
-          {/* ************************************************************************************************   */}
 
             <Stack direction={'row'} spacing={7} >
-              <Button onClick={toggleColorMode}  bg={'#F9E79F'}>
+              <Button onClick={toggleColorMode}  bg={'#A2D9CE '}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                 
               </Button>
 
               <Menu>
-                <MenuButton
-                  as={Button}
+                {/* <MenuButton */}
+                  {/* as={Button}
                   rounded={'full'}
                   variant={'link'}
                   cursor={'pointer'}
-                  minW={0}>
+                  minW={0}> */}
                   <Box
-                  mr={"30px"} bg={'white'} color={'gray.900'}><Text>Profile</Text></Box>
+                  mr={"10px"} bg={'white'} color={'gray.900'} fontSize={'13px'} fontWeight={'600'}  width={'100px'}><Text> 
+                     <Avatar
+                      size={'sm'}
+                      iconLabel={'Profile'}
+                      src={'https://avatars.dicebear.com/api/male/username.svg'}
+                    />  
+                    <p >{isAuthenticated && <p >{user.name}</p>}</p> </Text></Box>
 
-                </MenuButton>
+                {/* </MenuButton>
                 <MenuList alignItems={'center'}>
                   <br />
                   <Center>
@@ -141,57 +146,58 @@ export default function Navbar() {
                  
                   <MenuItem>My Orders</MenuItem>
                  
-                </MenuList>
+                </MenuList> */}
 
                 <Box
                 label="Add to cart"
-               
+        
+                width={'100px'}
                 placement={'top'}
-                color={'gray.500'}
-                fontSize={'1.2em'}>
-                {/* <chakra.a href={'#'} display={'flex'}> */}
-
+                // color={'gray.500'}
+                fontSize={'1.3em'}
+                color={'red'}
+                fontWeight={'500'}
+                >
+                
+                
                   <Link to="/cart">
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} bg={'white'} color={'gray.900'} />
-                  
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} bg={'white'} color={'gray.900'} />{cartItemCount}
+                 
                   </Link>
-                
-                <Link to="/"> </Link>
-                
-                {/* </chakra.a> */}
+                   
               </Box>  
-                
+              
               </Menu>
               
             </Stack> 
           </Flex>
         </Flex>
       </Box>
-
+  </Menu>
 {/* <br/> */}
       {/* **************************************Drop down nave****************************** */}
-     {/* <Divider mt={"5px"} border={"1px solid #F43397"}/> */}
+     <Divider mt={"5px"} border={"0.1px solid #F5B041 "}/>
 
       <Box bg={'white'} px={4} h={12}>
       
   <Link to="/products"> 
-  <Button rightIcon={<ArrowForwardIcon />} color='gray.800' bg={'white'}>
-    Products For You
+  <Button  color='gray.800' bg={'white'}>
+    ALL NEW 
   </Button>
   </Link>
   
 <Menu>
     <MenuButton as={Button}  color='gray.800' bg={'white'}>
-     Women Ethnic
+   | Women Ethnic 
     </MenuButton>
   <MenuList >
-    <MenuItem color={"#F43397"}>Sarees</MenuItem>  
+    <MenuItem color={"#F39C12"}>Sarees</MenuItem>  
     <MenuItem>All Sarees </MenuItem>
     <MenuItem>Silk Sarees </MenuItem>
     <MenuItem>Cotton Sarees</MenuItem>
     <MenuItem>Chiffon Sarees</MenuItem>
     
-    <MenuItem color={"#F43397"}>Kurtis</MenuItem>
+    <MenuItem color={"#F39C12"}>Kurtis</MenuItem>
     <MenuItem>All Kurtis </MenuItem>
     <MenuItem>Rayon Kurtis </MenuItem>
     <MenuItem>Cotton Kurtis</MenuItem>
@@ -201,17 +207,17 @@ export default function Navbar() {
 
 <Menu>
   <MenuButton as={Button}  color={'gray.800'} bg={'white'}>
-   Women Western
+ |  Women Western
   </MenuButton>
   <MenuList>
-    <MenuItem color={"#F43397"}>Topwear</MenuItem>
+    <MenuItem color={"#F39C12"}>Topwear</MenuItem>
     <MenuItem>Tops</MenuItem>
     <MenuItem>Dresses</MenuItem>
-    <MenuItem color={"#F43397"}>Bottemwear</MenuItem>
+    <MenuItem color={"#F39C12"}>Bottemwear</MenuItem>
     <MenuItem>Jeans</MenuItem>
     <MenuItem>Shorts</MenuItem>
     <MenuItem>Skirts</MenuItem>
-    <MenuItem color={"#F43397"}>Sleepwear</MenuItem>
+    <MenuItem color={"#F39C12"}>Sleepwear</MenuItem>
     <MenuItem>Babbydolls</MenuItem>
     <MenuItem>Nightsuits</MenuItem>
   </MenuList>
@@ -219,13 +225,13 @@ export default function Navbar() {
 
 <Menu>
   <MenuButton as={Button}   color='gray.800' bg={'white'}>
-    Mens
+   | Mens
   </MenuButton>
   <MenuList>
-    <MenuItem color={"#F43397"}>Topwear</MenuItem>
+    <MenuItem color={"#F39C12"}>Topwear</MenuItem>
     <MenuItem>Tshirts</MenuItem>
     <MenuItem>Shirts</MenuItem>
-    <MenuItem color={"#F43397"}>Bottomwear</MenuItem>
+    <MenuItem color={"#F39C12"}>Bottomwear</MenuItem>
     <MenuItem>Track Pants</MenuItem>
     <MenuItem>Trousers</MenuItem>
     <MenuItem>Jeans</MenuItem>
@@ -234,27 +240,27 @@ export default function Navbar() {
 
 <Menu>
   <MenuButton as={Button}  color={'gray.800'} bg={'white'}>
-   Kids
+ |  Kids
   </MenuButton>
   <MenuList>
-    <MenuItem color={"#F43397"}>Boys & Girls 2+ Years</MenuItem>
+    <MenuItem color={"#F39C12"}>Boys & Girls 2+ Years</MenuItem>
     <MenuItem>Dresses</MenuItem>
-    <MenuItem color={"#F43397"}>Infant 0-2 Years</MenuItem>
+    <MenuItem color={"#F39C12"}>Infant 0-2 Years</MenuItem>
     <MenuItem >Rompers</MenuItem>
-    <MenuItem color={"#F43397"}>Babby Care</MenuItem>
+    <MenuItem color={"#F39C12"}>Babby Care</MenuItem>
     <MenuItem >All Baby Care</MenuItem>
   </MenuList>
 </Menu>
 
 <Menu>
   <MenuButton as={Button} color={'gray.800'} bg={'white'}>
-   Home & Kitchen
+ |   Home & Kitchen
   </MenuButton>
   <MenuList>
-    <MenuItem color={"#F43397"}>Home Decor</MenuItem>
+    <MenuItem color={"#F39C12"}>Home Decor</MenuItem>
     <MenuItem>Stickers</MenuItem>
     <MenuItem>Clocks</MenuItem>
-    <MenuItem color={"#F43397"}>Kitchen & Dining</MenuItem>
+    <MenuItem color={"#F39C12"}>Kitchen & Dining</MenuItem>
     <MenuItem>Kitchen storage</MenuItem>
     <MenuItem>Cookware & Bakewear</MenuItem>
   </MenuList>
@@ -262,35 +268,35 @@ export default function Navbar() {
 
 <Menu>
   <MenuButton as={Button} color={'gray.800'} bg={'white'}>
-    Beautiful & Health
+  |  Beautiful & Health
   </MenuButton>
   <MenuList>
-    <MenuItem color={"#F43397"}>Make Up</MenuItem>
+    <MenuItem color={"#F39C12"}>Make Up</MenuItem>
     <MenuItem>Face</MenuItem>
     <MenuItem>Eyes</MenuItem>
     <MenuItem>Lips</MenuItem>
-    <MenuItem color={"#F43397"}>Wellness</MenuItem>
+    <MenuItem color={"#F39C12"}>Wellness</MenuItem>
     <MenuItem>Oralcare</MenuItem>
     <MenuItem>Sanitizers</MenuItem>
-    <MenuItem color={"#F43397"}>Skincare</MenuItem>
+    <MenuItem color={"#F39C12"}>Skincare</MenuItem>
     <MenuItem>Deadorants</MenuItem>
   </MenuList>
 </Menu>
 
 <Menu>
   <MenuButton as={Button} color={'gray.800'} bg={'white'}>
-    Bag & Footwear 
+  |  Bag & Footwear 
   </MenuButton>
   <MenuList>
-    <MenuItem color={"#F43397"}>Women Bags</MenuItem>
+    <MenuItem color={"#F39C12"}>Women Bags</MenuItem>
     <MenuItem>Handbags</MenuItem>
     <MenuItem>Slingbags</MenuItem>
-    <MenuItem color={"#F43397"}>Men Bags</MenuItem>
+    <MenuItem color={"#F39C12"}>Men Bags</MenuItem>
     <MenuItem>All Men Bags</MenuItem>
-    <MenuItem color={"#F43397"}>Men Footwear</MenuItem>
+    <MenuItem color={"#F39C12"}>Men Footwear</MenuItem>
     <MenuItem >Sports Shoes</MenuItem>
     <MenuItem >Formal shoes</MenuItem>
-    <MenuItem color={"#F43397"}>Women Footwear</MenuItem>
+    <MenuItem color={"#F39C12"}>Women Footwear</MenuItem>
     <MenuItem>Flats</MenuItem>
     <MenuItem>Juttis</MenuItem>
   </MenuList>
@@ -302,7 +308,6 @@ export default function Navbar() {
 
       </Box>
       
-      {/* <AllRoutes/> */}
   
     </>
   );

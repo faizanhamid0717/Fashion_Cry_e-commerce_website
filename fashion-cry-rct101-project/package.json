@@ -1,5 +1,5 @@
 {
-  "name": "meeshoex-rct101",
+  "name": "fashion-cry-rct101-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

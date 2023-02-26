@@ -46,26 +46,27 @@ export default function VideoSlider() {
       text:
         "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        'https://assets.ajio.com/cms/AJIO/WEB/22012023-UHP-D-MainBanner-P2-WinterwearClearance-GespoCampusSutra-6080.jpg',
+        'https://assets.ajio.com/cms/AJIO/WEB/D-UHP-Trendswithbenefits-P1-AvaasaNetplayAcai-Upto70.jpg',
     },
     {
       title: 'Design Projects 2',
       text:
         "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        'https://assets.ajio.com/cms/AJIO/WEB/22012023-UHP-D-UHPwomen-p2-ajmal-colorbar-upto70.jpg',
+        'https://assets.ajio.com/cms/AJIO/WEB/D-UHP-Trendswithbenefits-P7-KidswearKGFrendzRio-Under399.jpg',
     },
     {
       title: 'Design Projects 3',
       text:
         "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        'https://assets.ajio.com/cms/AJIO/WEB/22012023-d-MHP-uhphim-p5-brands-3070.jpg',
+        'https://assets.ajio.com/cms/AJIO/WEB/D-UHP-Trendswithbenefits-P8-trendsFootwear-paylessHiAttitude-Upto50.jpg',
     },
   ];
 
   return (
     <Box
+     mt={'40px'}
       position={'relative'}
       height={'600px'}
       width={'full'}

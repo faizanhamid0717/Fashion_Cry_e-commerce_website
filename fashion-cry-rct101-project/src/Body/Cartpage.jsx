@@ -27,53 +27,23 @@ import React,{useState,useEffect, useContext} from 'react'
 import { Navigate } from 'react-router-dom'
 import { Payment } from './Payment'
 import { useParams } from 'react-router-dom';
-import { CartContext } from '../context/CartContext';
+import { Cartcontext, CartContext } from '../context/CartContext';
 
 
 export const CartPage = () => {
   const [redirectToPayment, setRedirectToPayment] = React.useState(false);
-    const [count,setCount]=useState(1)
-    // const [data,setData]=useState([])
-    // const { cart,handelCount} = useContext(CartContext);
-    const [cart,setCart]=useState([])
-     
+   const [empty,setEmpty]=useState(false)
+   const [error,setError]=useState(false)
 
-console.log('my cart is',cart)
+  const Globalstate = useContext(Cartcontext);
+  const state = Globalstate.state;
+  const dispatch = Globalstate.dispatch;
+  console.log(Globalstate);
 
-  //   const {id}=useParams()
-  //   console.log(id)
-  
-  const getData=()=>{
-    return(
-        axios.get(`http://localhost:8080/cart`)
-        .then((res)=>{
-            console.log(res.data)
-            setCart(res.data)
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-    )
-    
-  }
-
-  useEffect(()=>{
-    getData()
-  },[])
-  
-  
-  
-   const{image,title,price,description,category
-   }=cart
-  
-
-
- 
-    
-  
-
-
-
+  const total = state.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+  console.log("lll", state); 
 
   const handleCheck = () => {
     setRedirectToPayment(true);
@@ -81,12 +51,13 @@ console.log('my cart is',cart)
 
   
   
-  return (
-<div style={{display:'grid' , gridTemplateColumns:'repeat(2,1fr)'}}>
+  return empty? (<Heading>Oops Your Cart is Empty </Heading>) : error ? "" :(
+
+<div style={{display:'grid' , gridTemplateColumns:'repeat(2,1fr)' }} >
 
     <div style={{display:'grid' , gridTemplateColumns:'repeat(1,1fr)',gap:'50px',width:'800px'}}>
      
-    {cart?.map((ele)=>
+    {state?.map((item)=>
 
     <Center py={6}>
       <Stack
@@ -105,7 +76,7 @@ console.log('my cart is',cart)
             // src={
             //   'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
             // }
-            src={ele.image}
+            src={item.image}
           />
         </Flex>
         <Stack
@@ -116,17 +87,17 @@ console.log('my cart is',cart)
           p={1}
           pt={2}>
           <Heading fontSize={'2xl'} fontFamily={'body'}>
-            {ele.title}
+            {item.title}
           </Heading>
           <Text fontWeight={600} color={'gray.500'} size="sm" mb={4}>
-           {ele.category}
+           {item.category}
           </Text>
           <Text
             textAlign={'center'}
             // color={useColorModeValue('gray.700', 'gray.400')}
              fontFamily={'body'}
             px={7}>
-           Price : {ele.price}
+           Price : ₹ {item.price}
             {/* <Link href={'#'} color={'blue.400'}>
               #tag
             </Link>
@@ -165,14 +136,19 @@ console.log('my cart is',cart)
             alignItems={'center'}>
 
             <Button
-              flex={1}  size='sm' colorScheme='teal' variant='outline'
-              fontSize={'xl'}
-              rounded={'full'}
+              flex={1}  size='sm' colorScheme='teal' variant='outline' w={'10px'}
+              fontSize={'3xl'}
+              rounded={'5px'}
               _focus={{
                 bg: 'gray.200',
               }}
-             disabled={count == 1}
+            //  disabled={count == 1}
               // onClick={()=>handelCount(-1,ele.id)}
+              onClick={() => {
+                if (item.quantity > 1) {
+                  dispatch({ type: "DECREASE", payload: item });
+                }
+              }}
               >
               -
             </Button>
@@ -184,17 +160,20 @@ console.log('my cart is',cart)
               _focus={{
                 bg: 'gray.200',
               }}>
-              {/* {count} */}
+              {item.quantity}
             </Button>
 
             <Button
               flex={1}  size='sm'  colorScheme='teal' variant='outline'
-              fontSize={'xl'}
-              rounded={'full'}
+              fontSize={'2xl'}
+              rounded={'5px'}
               _focus={{
                 bg: 'gray.200',
               }}
               // onClick={()=>handelCount(1,ele.id)}
+              onClick={() =>
+                dispatch({ type: "INCREASE", payload: item })
+              }
               >
               +
             </Button>
@@ -213,12 +192,18 @@ console.log('my cart is',cart)
               }}
               _focus={{
                 bg: 'blue.500',
-              }}>
+              }}
+              onClick={() =>
+                dispatch({ type: "REMOVE", payload: item })
+              }
+              bgColor={'#EF5350'}
+              
+              >
               Remove
             </Button>
           </Stack>
-          <Heading fontSize={'2xl'} fontFamily={'body'}>
-            Total : {count*ele.price}
+          <Heading fontSize={'xl'} fontFamily={'body'}>
+            Total : ₹ {item.quantity * item.price}
           </Heading>
 
         </Stack>
@@ -229,14 +214,14 @@ console.log('my cart is',cart)
 </div>
 
     <div style={{width:'400px'}}>
-      <Text>EXPRESS-INSIDER</Text>
+      <Text fontSize={"4xl"}>FASHION-INSIDER</Text>
       
-      <Text>Bag Summary</Text>
-      <Text>Free Standard Shipping on orders of $50 or more</Text>
+      <Text fontSize={"2xl"} color={'#FFA726 '}>Bag Summary</Text>
+      <Text>Free Standard Shipping on orders of  ₹ 50 or more</Text>
 
       <TableContainer>
   <Table variant='simple'>
-    <TableCaption>Total Amount : $0.00</TableCaption>
+    <TableCaption fontWeight={"bold"} fontSize={'xl'}>Total Amount :  ₹ {total}</TableCaption>
     <Thead>
       <Tr>
         
@@ -247,7 +232,7 @@ console.log('my cart is',cart)
     <Tbody>
       <Tr>
         <Td>Merchandise Subtotal</Td>
-        <Td>{count*price}</Td>
+        <Td fontWeight={"bold"} fontSize={'xl'}> ₹ {total}</Td>
         
       </Tr>
       <Tr>
@@ -257,7 +242,7 @@ console.log('my cart is',cart)
       </Tr>
       <Tr>
         <Td>Estimated Tax</Td>
-        <Td>$0.00</Td>
+        <Td > ₹ 0.00</Td>
         
       </Tr>
     </Tbody>
@@ -271,7 +256,7 @@ console.log('my cart is',cart)
   </Table>
 </TableContainer>
 
-    <Button border='1px solid black' w='300px'onClick={handleCheck}>Check-Out</Button>
+    <Button border='1px solid black' w='300px'onClick={handleCheck} bg={'#FBC02D'}>Check-Out</Button>
     {redirectToPayment && <Navigate to="/checkout" />}
     </div>
 
