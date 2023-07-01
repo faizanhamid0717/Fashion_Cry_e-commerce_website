@@ -67,7 +67,7 @@ export const AdminPage = () => {
   })
 
   let sort ='price'
-  let limit = 8
+  let limit = 12
   let lastPage = Math.ceil(total/limit)
 
 
@@ -75,12 +75,12 @@ export const AdminPage = () => {
 
   const FetchAdmin=()=>{
     setLoading(true)
-    let apiUrl=(`http://localhost:8080/Add`)
+    let apiUrl=(`https://easy-pink-cricket-hat.cyclic.app/Add`)
 
   if(order){
-      apiUrl=`http://localhost:8080/Add?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`
+      apiUrl=`https://easy-pink-cricket-hat.cyclic.app/Add?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`
   }else{
-      apiUrl=`http://localhost:8080/Add?_page=${page}&_limit=${limit}`
+      apiUrl=`https://easy-pink-cricket-hat.cyclic.app/Add?_page=${page}&_limit=${limit}`
   }
   return (
    
@@ -99,7 +99,7 @@ useEffect(()=>{
 },[page,order])
 
 const handelDelete=(id)=>{
-  axios.delete(`http://localhost:8080/Add/${id}`)
+  axios.delete(`https://easy-pink-cricket-hat.cyclic.app/Add/${id}`)
   .then(FetchAdmin)
 }
 
@@ -112,7 +112,7 @@ const handelSort=(val)=>{
 }
 
 const handelForm=()=>{
-  axios.post(`http://localhost:8080/Add`,{
+  axios.post(`https://easy-pink-cricket-hat.cyclic.app/Add`,{
     ...form,
    
    

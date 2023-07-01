@@ -213,11 +213,11 @@ export const CartPage = () => {
 
 </div>
 
-    <div style={{width:'400px'}}>
-      <Text fontSize={"4xl"}>FASHION-INSIDER</Text>
+    <div style={{width:'400px' , marginTop:'25px'}}>
+      <Text fontSize={"4xl"} >#FASHION-INSIDER</Text>
       
       <Text fontSize={"2xl"} color={'#FFA726 '}>Bag Summary</Text>
-      <Text>Free Standard Shipping on orders of  ₹ 50 or more</Text>
+      <Text>Free Standard Shipping on orders of  ₹ 1100 or more</Text>
 
       <TableContainer>
   <Table variant='simple'>

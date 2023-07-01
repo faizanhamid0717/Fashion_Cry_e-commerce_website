@@ -21,7 +21,7 @@ export default function PaymentForm() {
     })
 
     const handelCard=()=>{
-      axios.post(`http://localhost:8080/card`,{
+      axios.post(`https://easy-pink-cricket-hat.cyclic.app/card`,{
        ...payment,
       })
       .then((res)=> console.log(res.data))

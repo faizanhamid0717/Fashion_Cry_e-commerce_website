@@ -20,21 +20,21 @@ export const Products = () => {
     const [filter,setFilter]=useState("")
     const [loading,setLoading]=useState(false)
    let sort ='price'  
-   let limit = 6
+   let limit = 18
 let lastPage = Math.ceil(total/limit)
 
 
 const getData=()=>{
     setLoading(true)
     const params =select ? {q:select} : {}
-    let apiUrl=`http://localhost:8080/Add`
+    let apiUrl=`https://easy-pink-cricket-hat.cyclic.app/Add`
 
     if(order){
-        apiUrl=`http://localhost:8080/Add?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`
+        apiUrl=`https://easy-pink-cricket-hat.cyclic.app/Add?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`
     }else if(filter){
-        apiUrl=`http://localhost:8080/Add?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}&category=${filter}`
+        apiUrl=`https://easy-pink-cricket-hat.cyclic.app/Add?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}&category=${filter}`
     }else{
-        apiUrl=`http://localhost:8080/Add?_page=${page}&_limit=${limit}`
+        apiUrl=`https://easy-pink-cricket-hat.cyclic.app/Add?_page=${page}&_limit=${limit}`
     }
 
     return(

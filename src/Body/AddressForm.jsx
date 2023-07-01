@@ -23,7 +23,7 @@ export default function AddressForm() {
   })
 
   const handelSubmit=()=>{
-    axios.post(`http://localhost:8080/address`,{
+    axios.post(`https://easy-pink-cricket-hat.cyclic.app/address`,{
       ...text,
     })
     .then((res)=>console.log(res.data))

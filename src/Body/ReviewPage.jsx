@@ -30,7 +30,7 @@ export default function Review() {
 
 
 const FetchAddress=()=>{
-  axios.get(`http://localhost:8080/address`)
+  axios.get(`https://easy-pink-cricket-hat.cyclic.app/address`)
   .then((res)=>{
     console.log(res.data)
     setAddress(res.data)
@@ -38,7 +38,7 @@ const FetchAddress=()=>{
 }
 
 const FetchCard=()=>{
-  axios.get(`http://localhost:8080/card`)
+  axios.get(`https://easy-pink-cricket-hat.cyclic.app/card`)
   .then((res)=>{
     console.log(res.data)
     setPay(res.data)

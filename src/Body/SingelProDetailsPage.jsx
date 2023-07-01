@@ -51,7 +51,7 @@ export const  ProductDetail = () => {
 
 const getData=(id)=>{
   return(
-      axios.get(`http://localhost:8080/Add/${id}`)
+      axios.get(`https://easy-pink-cricket-hat.cyclic.app/Add/${id}`)
       .then((res)=>{
         const updated={...res.data,quantity:1}
           console.log(updated)
@@ -172,7 +172,7 @@ const handelCart=()=>{
                 
               }}
               
-              onClick={handelCart}
+              // onClick={handelCart}
               // onClick={() => dispatch({ type: "ADD", payload: data})}
             
               >    
